@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobileflutter/component/main_header.dart';
 import 'package:mobileflutter/controlller/controllers.dart';
 import 'package:mobileflutter/view/home/component/carousel_slider/carousel_loading.dart';
+import 'package:mobileflutter/view/home/component/carousel_slider/carousel_loading_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,10 +13,12 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
         child: Column(
       children: [
-        MainHeader(),
+        const MainHeader(),
         Obx(() {
-          if (homeController.isBannerLoading.value) {
-            return const CarouselLoading();
+          print('Banner List Length: ${homeController.bannerList.length}');
+          if (homeController.bannerList.isNotEmpty) {
+            return CarouselSliderView(
+                bannerList: homeController.bannerList);
           } else {
             return CarouselLoading();
           }

@@ -21,7 +21,7 @@ class HomeController extends GetxController {
         bannerList.assignAll(adBannerListFromJson(result.body));
       }
     } finally {
-      print(bannerList.first.image);
+      print('Banner List Length trong homeController: ${bannerList.length}');
       isBannerLoading(false);
     }
   }
